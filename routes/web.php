@@ -19,6 +19,10 @@ Route::get('/databarang/jenis/create', 'ItemTypeController@create')->name('item.
 
 Route::get('/databarang/satuan', 'ItemUnitController@index')->name('item.unit.index');
 Route::get('/databarang/satuan/create', 'ItemUnitController@create')->name('item.unit.create');
+
+Route::get('/databarang/laporan-masuk', 'ItemReportController@incoming_index')->name('item.report-incoming.index');
+
+Route::get('/databarang/laporan-keluar', 'ItemReportController@outcoming_index')->name('item.report-outcoming.index');
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

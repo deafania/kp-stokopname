@@ -80,9 +80,9 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ route('item.type.index') }}" class="nav-link {{ ( request()->is('databarang/jenis') || request()->is('databarang/jenis/create') ) ? 'active' : ''}}">
+							<a href="{{ route('item.type.index') }}" class="nav-link {{ ( request()->is('databarang/nama') || request()->is('databarang/nama/create') ) ? 'active' : ''}}">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Jenis Barang</p>
+								<p>Nama Barang</p>
 							</a>
 						</li>
 						<li class="nav-item">
@@ -93,16 +93,51 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav-item">
-					<li class="nav-item">
-						<a href="" class="nav-link">
-							<i class="nav-icon fas fa-users"></i>
-							<p>
-								Pengelolaan Barang
-								<span class="badge badge-info right"></span>
-							</p>
-						</a>
-					</li>
+				<li class="nav-item {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') || request()->is('databarang/laporan-keluar')  ) ? 'menu-is-opening menu-open' : '' }} ">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-folder"></i>
+						<p>
+							Pengelolaan Barang
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{ route('item.report-incoming.index') }}" class="nav-link {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') ) ? 'active' : ''}}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Barang Masuk</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ route('item.report-outcoming.index') }}" class="nav-link {{ request()->is('databarang/laporan-keluar') ? 'active' : ''}}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Barang Keluar</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') || request()->is('databarang/laporan-keluar')  ) ? 'menu-is-opening menu-open' : '' }} ">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-folder"></i>
+						<p>
+							Laporan
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{ route('item.report-incoming.index') }}" class="nav-link {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') ) ? 'active' : ''}}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Barang Masuk</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ route('item.report-outcoming.index') }}" class="nav-link {{ request()->is('databarang/laporan-keluar') ? 'active' : ''}}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Barang Keluar</p>
+							</a>
+						</li>
+					</ul>
 				</li>
 			</li>
 		</ul>
