@@ -8,11 +8,11 @@ class ItemTypeController extends Controller
 {
     public function index()
     {
-        return view('pages.items.type.index');
+        return view('pages.item.inventory.type.index');
     }
 
     public function create()
     {
-        return view('pages.items.type.create');
+        return view('pages.item.inventory.type.create');
     }
 }

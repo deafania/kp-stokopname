@@ -12,7 +12,9 @@
                     </svg>
                     <h1 class="ml-2">Data Barang</h1>
                 </div><!-- /.col -->
+                @hasrole('admin')
                 <a href="{{ route('item.create') }}" class="btn btn-primary">Tambah</a>
+                @endhasrole
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

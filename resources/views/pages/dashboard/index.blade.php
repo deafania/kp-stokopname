@@ -22,7 +22,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>Data Barang</h3>
                             
                             <p>New Orders</p>
                         </div>
@@ -84,8 +84,8 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Id Barang</th>
                         <th scope="col">Nama Barang</th>
-                        <th scope="col">Jenis Barang</th>
                         <th scope="col">Stok</th>
                         <th scope="col">Satuan</th>
                     </tr>
@@ -93,10 +93,10 @@
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>10 kg</td>
+                        <td>000001</td>
+                        <td>Pena</td>
+                        <td>5</td>
+                        <td>Pcs</td>
                     </tr>
                 </tbody>
             </table>

@@ -9,20 +9,29 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/databarang', 'ItemController@index')->name('item.index');
-Route::get('/databarang/create', 'ItemController@create')->name('item.create');
+Route::middleware('auth')->group( function() {
+    
+    Route::middleware('admin')->group( function() {
+        Route::get('/databarang/create', 'ItemController@create')->name('item.create');
+    });
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/databarang/jenis', 'ItemTypeController@index')->name('item.type.index');
-Route::get('/databarang/jenis/create', 'ItemTypeController@create')->name('item.type.create');
+    Route::get('/databarang', 'ItemController@index')->name('item.index');
+    
+    Route::get('/databarang/jenis', 'ItemTypeController@index')->name('item.type.index');
+    Route::get('/databarang/jenis/create', 'ItemTypeController@create')->name('item.type.create');
+    
+    Route::get('/databarang/satuan', 'ItemUnitController@index')->name('item.unit.index');
+    Route::get('/databarang/satuan/create', 'ItemUnitController@create')->name('item.unit.create');
+    
+    Route::get('/databarang/laporan-masuk', 'ItemReportController@incoming_index')->name('item.report-incoming.index');
+    Route::get('/databarang/laporan-keluar', 'ItemReportController@outcoming_index')->name('item.report-outcoming.index');
+    
+    Route::get('/databarang/pengelolaan/barang-masuk', 'ItemManagementController@incoming_index')->name('item.management-incoming.index');
+    Route::get('/databarang/pengelolaan/barang-keluar', 'ItemManagementController@outcoming_index')->name('item.management-outcoming.index');
+});
 
-Route::get('/databarang/satuan', 'ItemUnitController@index')->name('item.unit.index');
-Route::get('/databarang/satuan/create', 'ItemUnitController@create')->name('item.unit.create');
-
-Route::get('/databarang/laporan-masuk', 'ItemReportController@incoming_index')->name('item.report-incoming.index');
-
-Route::get('/databarang/laporan-keluar', 'ItemReportController@outcoming_index')->name('item.report-outcoming.index');
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

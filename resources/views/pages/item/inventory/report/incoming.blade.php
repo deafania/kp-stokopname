@@ -23,21 +23,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">ID Transaksi</th>
+                        <th scope="col">Nos</th>
                         <th scope="col">Tanggal</th>
+                        <th scope="col">Id Barang</th>
                         <th scope="col">Nama Barang</th>
                         <th scope="col">Jumlah Masuk</th>
-                        <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>192381029380</td>
                         <td>20 - 08 -2000</td>
-                        <td>Belatung</td>
-                        <td>200</td>
+                        <td>000001</td>
+                        <td>Pena</td>
+                        <td>10</td>
                         <td class="d-flex">
                             <span class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>

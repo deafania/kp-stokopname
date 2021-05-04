@@ -13,22 +13,11 @@
 				<img src="adminlte/dist/img/dea.jpg" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">Dea Fania</a>
+				<a href="#" class="d-block">{{ auth()->user()->name }} ( {{ auth()->user()->role }} )</a>
 			</div>
 		</div>
 		
-		<!-- SidebarSearch Form -->
-		<div class="form-inline">
-			<div class="input-group" data-widget="sidebar-search">
-				<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-				<div class="input-group-append">
-					<button class="btn btn-sidebar">
-						<i class="fas fa-search fa-fw"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		
+	
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -70,6 +59,8 @@
 						</a>
 					</li>
 				</li>
+
+				@hasrole('operator')
 				<li class="nav-item {{ ( request()->is('databarang/jenis') || request()->is('databarang/jenis') || request()->is('databarang/jenis/create') || request()->is('databarang/satuan')  ) ? 'menu-is-opening menu-open' : '' }} ">
 					<a href="#" class="nav-link">
 						<i class="nav-icon fas fa-folder"></i>
@@ -93,7 +84,9 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav-item {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') || request()->is('databarang/laporan-keluar')  ) ? 'menu-is-opening menu-open' : '' }} ">
+				@endhasrole
+
+				<li class="nav-item {{ ( request()->is('databarang/pengelolaan/*') ) ? 'menu-is-opening menu-open' : '' }} ">
 					<a href="#" class="nav-link">
 						<i class="nav-icon fas fa-folder"></i>
 						<p>
@@ -103,13 +96,13 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ route('item.report-incoming.index') }}" class="nav-link {{ ( request()->is('databarang/laporan-masuk') || request()->is('databarang/laporan-masuk/create') ) ? 'active' : ''}}">
+							<a href="{{ route('item.management-incoming.index') }}" class="nav-link {{ ( request()->is('databarang/pengelolaan/barang-masuk') ) ? 'active' : ''}}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Barang Masuk</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="{{ route('item.report-outcoming.index') }}" class="nav-link {{ request()->is('databarang/laporan-keluar') ? 'active' : ''}}">
+							<a href="{{ route('item.management-outcoming.index') }}" class="nav-link {{ request()->is('databarang/pengelolaan/barang-keluar') ? 'active' : ''}}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Barang Keluar</p>
 							</a>
@@ -139,6 +132,31 @@
 						</li>
 					</ul>
 				</li>
+
+				@hasrole('admin')
+				<li class="nav-item">
+					<li class="nav-item">
+						<a href="{{ route('item.index') }}" class="nav-link {{ ( request()->is('manajemenuser') || request()->is('manajemenuser/create') ) ? 'active' : ''}}">
+							<i class="nav-icon fas fa-users"></i>
+							<p>
+								Manajemen User
+								<span class="badge badge-info right"></span>
+							</p>
+						</a>
+					</li>
+				</li>
+				<li class="nav-item">
+					<li class="nav-item">
+						<a href="{{ route('item.index') }}" class="nav-link {{ ( request()->is('qrcode') || request()->is('qrcode/create') ) ? 'active' : ''}}">
+							<i class="nav-icon fas fa-users"></i>
+							<p>
+								Qr Code
+								<span class="badge badge-info right"></span>
+							</p>
+						</a>
+					</li>
+				</li>
+				@endhasrole
 			</li>
 		</ul>
 	</nav>

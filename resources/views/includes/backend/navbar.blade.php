@@ -13,7 +13,7 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-user"> Dea Fania</i>
+                <i class="far fa-user"> {{ auth()->user()->name }} ( {{ auth()->user()->role }} )</i>
                 <span class="badge badge-danger navbar-badge"></span>
             </a>
             
