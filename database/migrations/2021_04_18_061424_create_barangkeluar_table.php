@@ -15,10 +15,11 @@ class CreateBarangkeluarsTable extends Migration
     {
         Schema::create('barang_keluar', function (Blueprint $table) {
             $table->integer('id_barangkeluar');
-            $table->integer('id_transaksi');
-            $table->integer('id_databarang');
             $table->date('tanggal');
+            $table->integer('id_barang');
+            $table->integer('id_namabarang');
             $table->integer('jumlah_keluar');
+            $table->enum('status', ['approve', 'process', 'reject']);
             $table->timestamps();
         });
     }

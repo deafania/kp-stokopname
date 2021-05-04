@@ -32,6 +32,11 @@ Route::middleware('auth')->group( function() {
         Route::get('/pengelolaan/barang-masuk', 'ItemManagementController@incoming_index')->name('management-incoming.index');
         Route::get('/pengelolaan/barang-keluar', 'ItemManagementController@outcoming_index')->name('management-outcoming.index');
     });
+
+    Route::get('/manajemen-user', 'UserManagementController@index')->name('user.index');
+
+    Route::get('/manajemen-user/create', 'UserManagementController@create')->name('user.create');
+    Route::post('/manajemen-user/store', 'UserManagementController@store')->name('user.store');
 });
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

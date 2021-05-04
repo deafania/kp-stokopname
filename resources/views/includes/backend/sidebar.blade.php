@@ -136,7 +136,7 @@
 				@hasrole('admin')
 				<li class="nav-item">
 					<li class="nav-item">
-						<a href="{{ route('item.index') }}" class="nav-link {{ ( request()->is('manajemenuser') || request()->is('manajemenuser/create') ) ? 'active' : ''}}">
+						<a href="{{ route('user.index') }}" class="nav-link {{ ( request()->is('manajemen-user') || request()->is('manajemen-user/create') ) ? 'active' : ''}}">
 							<i class="nav-icon fas fa-users"></i>
 							<p>
 								Manajemen User
