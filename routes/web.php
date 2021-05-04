@@ -17,19 +17,21 @@ Route::middleware('auth')->group( function() {
     });
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-    Route::get('/databarang', 'ItemController@index')->name('item.index');
+    Route::group(['prefix' => 'databarang', 'as' => 'item.'], function(){
+        Route::get('/', 'ItemController@index')->name('index');
     
-    Route::get('/databarang/jenis', 'ItemTypeController@index')->name('item.type.index');
-    Route::get('/databarang/jenis/create', 'ItemTypeController@create')->name('item.type.create');
-    
-    Route::get('/databarang/satuan', 'ItemUnitController@index')->name('item.unit.index');
-    Route::get('/databarang/satuan/create', 'ItemUnitController@create')->name('item.unit.create');
-    
-    Route::get('/databarang/laporan-masuk', 'ItemReportController@incoming_index')->name('item.report-incoming.index');
-    Route::get('/databarang/laporan-keluar', 'ItemReportController@outcoming_index')->name('item.report-outcoming.index');
-    
-    Route::get('/databarang/pengelolaan/barang-masuk', 'ItemManagementController@incoming_index')->name('item.management-incoming.index');
-    Route::get('/databarang/pengelolaan/barang-keluar', 'ItemManagementController@outcoming_index')->name('item.management-outcoming.index');
+        Route::get('/jenis', 'ItemTypeController@index')->name('type.index');
+        Route::get('/jenis/create', 'ItemTypeController@create')->name('type.create');
+        
+        Route::get('/satuan', 'ItemUnitController@index')->name('unit.index');
+        Route::get('/satuan/create', 'ItemUnitController@create')->name('unit.create');
+        
+        Route::get('/laporan-masuk', 'ItemReportController@incoming_index')->name('report-incoming.index');
+        Route::get('/laporan-keluar', 'ItemReportController@outcoming_index')->name('report-outcoming.index');
+        
+        Route::get('/pengelolaan/barang-masuk', 'ItemManagementController@incoming_index')->name('management-incoming.index');
+        Route::get('/pengelolaan/barang-keluar', 'ItemManagementController@outcoming_index')->name('management-outcoming.index');
+    });
 });
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
