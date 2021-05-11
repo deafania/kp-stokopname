@@ -29,8 +29,11 @@ Route::middleware('auth')->group( function() {
         Route::get('/laporan-masuk', 'ItemReportController@incoming_index')->name('report-incoming.index');
         Route::get('/laporan-keluar', 'ItemReportController@outcoming_index')->name('report-outcoming.index');
         
-        Route::get('/pengelolaan/barang-masuk', 'ItemManagementController@incoming_index')->name('management-incoming.index');
-        Route::get('/pengelolaan/barang-keluar', 'ItemManagementController@outcoming_index')->name('management-outcoming.index');
+        Route::get('/pengelolaan/barang-masuk', 'ItemIncomingManagementController@index')->name('management-incoming.index');
+
+        Route::get('/pengelolaan/barang-masuk/create', 'ItemIncomingManagementController@create')->name('management-incoming.create');
+
+        Route::get('/pengelolaan/barang-keluar', 'ItemOutcomingManagementController@index')->name('management-outcoming.index');
     });
 
     Route::get('/manajemen-user', 'UserManagementController@index')->name('user.index');
