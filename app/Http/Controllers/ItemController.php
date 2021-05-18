@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Satuanbarang;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -11,6 +12,12 @@ class ItemController extends Controller
     }
 
     public function create(){
-        return view('pages.item.inventory.create');
+        $item_units = Satuanbarang::all();
+        return view('pages.item.inventory.create', compact('item_units'));
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

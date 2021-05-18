@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="content-wrapper p-3">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2 d-flex justify-content-between">
@@ -11,16 +10,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                     </svg>
                     <h1 class="ml-2">Data Barang</h1>
-                </div><!-- /.col -->
+                </div>
                 @hasrole('admin')
                 <a href="{{ route('item.create') }}" class="btn btn-primary">Tambah</a>
                 @endhasrole
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
     
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             
@@ -65,9 +62,9 @@
                 </tbody>
             </table>
             
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+            
+        </div>
     </section>
-    <!-- /.content -->
+    
 </div>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenisbarangsTable extends Migration
+class CreateJenisbarangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,13 @@ class CreateJenisbarangsTable extends Migration
     public function up()
     {
         Schema::create('nama_barang', function (Blueprint $table) {
-            $table->integer('id_namabarang');
-            $table->varchar('nama_barang', 50);
+            $table->id();
+            $table->string('nama_barang', 50);
             $table->timestamps();
+        });
+
+        Schema::table('nama_barang', function (Blueprint $table) {
+            $table->renameColumn('id', 'id_jenisbarang');
         });
     }
 

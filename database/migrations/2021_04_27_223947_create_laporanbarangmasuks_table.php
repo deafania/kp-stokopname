@@ -14,9 +14,13 @@ class CreateLaporanbarangmasuksTable extends Migration
     public function up()
     {
         Schema::create('laporan_barangmasuk', function (Blueprint $table) {
-            $table->integer('id_laporanbarangmasuk');
+            $table->id();
             $table->date('tanggal');
             $table->timestamps();
+        });
+        
+        Schema::table('laporan_barangmasuk', function (Blueprint $table) {
+            $table->renameColumn('id','id_laporanbarangmasuk');
         });
     }
 

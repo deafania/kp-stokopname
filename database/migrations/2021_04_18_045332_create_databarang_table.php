@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatabarangsTable extends Migration
+class CreateDatabarangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,15 @@ class CreateDatabarangsTable extends Migration
     public function up()
     {
         Schema::create('data_barang', function (Blueprint $table) {
-            $table->integer('id_barang');
-            $table->varchar('nama_barang', 50);
+            $table->id();
+            $table->string('nama_barang', 50);
             $table->integer('stok');
             $table->integer('id_satuanbarang');
             $table->timestamps();
-            
+        });
+
+        Schema::table('data_barang', function (Blueprint $table) {
+            $table->renameColumn('id', 'id_barang');
         });
     }
 

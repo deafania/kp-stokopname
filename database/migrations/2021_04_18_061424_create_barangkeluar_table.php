@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBarangkeluarsTable extends Migration
+class CreateBarangkeluarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,17 @@ class CreateBarangkeluarsTable extends Migration
     public function up()
     {
         Schema::create('barang_keluar', function (Blueprint $table) {
-            $table->integer('id_barangkeluar');
+            $table->id();
             $table->date('tanggal');
             $table->integer('id_barang');
             $table->integer('id_namabarang');
             $table->integer('jumlah_keluar');
             $table->enum('status', ['approve', 'process', 'reject']);
             $table->timestamps();
+        });
+
+        Schema::table('barang_keluar', function (Blueprint $table) {
+            $table->renameColumn('id','id_barangkeluar');
         });
     }
 

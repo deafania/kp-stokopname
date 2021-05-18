@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="content-wrapper p-3">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -11,61 +10,47 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                     <h1 class="ml-2">Input Barang</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
     
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             
             <div class="card" style="width: 100%;">
-                
                 <div class="card-body pl-4">
-                    
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="usr">Nama Barang</label>
-                            <input type="text" class="form-control" id="usr" name="username">
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="usr">Jenis Barang</label>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>--- PILIH JENIS BARANG ---</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="usr">Satuan Barang</label>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>--- PILIH SATUAN BARANG ---</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="d-flex">
-                        <button class="btn btn-primary mr-3">Simpan</button>
-                        <button class="btn btn-light">Batal</button>
-                    </div>
+                    <form action="{{ route('item.store') }}" method="POST">
+                        @csrf
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="nama_barang">Nama Barang</label>
+                                <input type="text" class="form-control" id="nama_barang" name="username">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="usr">Satuan Barang</label>
+                                <select class="custom-select" id="inputGroupSelect01" name="id_satuanbarang">
+                                    <option selected>--- PILIH SATUAN BARANG ---</option>
+                                    @foreach ($item_units as $item_unit)
+                                        <option value="{{ $item_unit->id_satuanbarang }}">{{ $item_unit->satuan_barang }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-primary mr-3">Simpan</button>
+                            <button class="btn btn-light">Batal</button>
+                        </div>
+                    </form>
                     
                 </div>
-                
             </div>
             
-
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
-    <!-- /.content -->
 </div>
 @endsection

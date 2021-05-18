@@ -14,6 +14,7 @@ Route::middleware('auth')->group( function() {
     
     Route::middleware('admin')->group( function() {
         Route::get('/databarang/create', 'ItemController@create')->name('item.create');
+        Route::post('/databarang/store', 'ItemController@store')->name('item.store');
     });
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
