@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
+use App\Models\Databarang;
 use App\Models\Satuanbarang;
-use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -16,8 +17,11 @@ class ItemController extends Controller
         return view('pages.item.inventory.create', compact('item_units'));
     }
 
-    public function store(Request $request)
-    {
-        dd($request->all());
+    public function store(ItemRequest $request)
+    {   
+        $data = $request->validated();
+        Databarang::create($data);
+
+        return redirect()->route('item.index')->with('success', 'Data barang berhasil dibuat');
     }
 }

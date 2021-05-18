@@ -26,18 +26,39 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="nama_barang">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama_barang" name="username">
+                                <input type="text" class="form-control @error('nama_barang') is-invalid @enderror" id="nama_barang" name="nama_barang">
+                                @error('nama_barang')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="stok">Stok</label>
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok">
+                                @error('stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="usr">Satuan Barang</label>
-                                <select class="custom-select" id="inputGroupSelect01" name="id_satuanbarang">
-                                    <option selected>--- PILIH SATUAN BARANG ---</option>
+                                <select class="custom-select @error('id_satuanbarang') is-invalid @enderror" id="inputGroupSelect01" name="id_satuanbarang">
+                                    <option value="" selected>--- PILIH SATUAN BARANG ---</option>
                                     @foreach ($item_units as $item_unit)
                                         <option value="{{ $item_unit->id_satuanbarang }}">{{ $item_unit->satuan_barang }}</option>
                                     @endforeach
                                 </select>
+                                @error('id_satuanbarang')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         
