@@ -6,6 +6,7 @@
   <title>AdminLTE 3 | Dashboard</title>
   
   @include('includes.backend.style')
+  <livewire:styles />
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -41,6 +42,7 @@
   @yield('script-after')
   @include('sweetalert::alert')
 
-  @livewireScripts
+  <livewire:scripts />
+
 </body>
 </html>

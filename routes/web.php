@@ -20,6 +20,10 @@ Route::middleware('auth')->group( function() {
 
     Route::group(['prefix' => 'databarang', 'as' => 'item.'], function(){
         Route::get('/', 'ItemController@index')->name('index');
+
+        Route::get('/{databarang:id}/edit', 'ItemController@edit')->name('edit');
+        Route::patch('/{databarang:id}/update', 'ItemController@update')->name('update');
+        Route::delete('/{databarang:id}/delete', 'ItemController@delete')->name('delete');
     
         Route::get('/jenis', 'ItemTypeController@index')->name('type.index');
         Route::get('/jenis/create', 'ItemTypeController@create')->name('type.create');

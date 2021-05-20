@@ -11,8 +11,13 @@ class Databarang extends Model
 
     protected $table = "data_barang";
 
+    protected $primaryKey = 'id_barang';
+
     protected $fillable = [
         'nama_barang','id_jenisbarang','stok','id_satuanbarang'
     ];
 
+    public function unit(){
+        return $this->belongsTo(Satuanbarang::class, 'id_satuanbarang', 'id_satuanbarang');
+    }
 }
