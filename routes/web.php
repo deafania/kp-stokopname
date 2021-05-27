@@ -15,6 +15,14 @@ Route::middleware('auth')->group( function() {
     Route::middleware('admin')->group( function() {
         Route::get('/databarang/create', 'ItemController@create')->name('item.create');
         Route::post('/databarang/store', 'ItemController@store')->name('item.store');
+        Route::get('/databarang/delete', 'ItemController@store')->name('item.delete');
+        Route::get('/databarang/{databarang}/edit', [App\Http\Controllers\ItemController::class, 'editbarang'])->name('databarang-edit-databarang');
+        Route::get('/databarang/{databarang}/delete', [App\Http\Controllers\ItemController::class, 'delete'])->name('databarang-delete-databarang');
+        
+        Route::get('/databarangmasuk/(id_barangmasuk)/edit', [App\Http\Controllers\ItemManagementController::class, 'editbarang'])->name('databarangmasuk-edit-databarangmasuk');
+        
+        
+   
     });
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -23,7 +31,7 @@ Route::middleware('auth')->group( function() {
 
         Route::get('/{databarang:id}/edit', 'ItemController@edit')->name('edit');
         Route::patch('/{databarang:id}/update', 'ItemController@update')->name('update');
-        Route::delete('/{databarang:id}/delete', 'ItemController@delete')->name('delete');
+        // Route::delete('/{databarang:id}/delete', 'ItemController@delete')->name('delete');
     
         Route::get('/jenis', 'ItemTypeController@index')->name('type.index');
         Route::get('/jenis/create', 'ItemTypeController@create')->name('type.create');

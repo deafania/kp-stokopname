@@ -7,7 +7,7 @@ use App\Models\Databarang;
 use App\Models\Namabarang;
 use App\Models\Satuanbarang;
 
-class ItemController extends Controller
+class Itemcontrolleroperator extends Controller
 {
     public function index(){
         $items = Databarang::latest()->get();

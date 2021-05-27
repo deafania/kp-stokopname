@@ -14,7 +14,8 @@ class UserManagementController extends Controller
         return view('pages.user.create');
     }
 
-    public function store(){
+    public function store(Request $request){
+        
         // return view('pages.user.index');
     }
 }

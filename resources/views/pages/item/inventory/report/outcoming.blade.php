@@ -19,8 +19,22 @@
 
     <section class="content">
         <div class="container-fluid">
-            
-            <table class="table">
+            <div class="d-flex">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="usr">Awal Tanggal</label>
+                        <input type="date" class="form-control" id="usr" name="username">
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="usr">Akhir Tanggal</label>
+                        <input type="date" class="form-control" id="usr" name="username">
+                    </div>
+                </div>
+            </div>
+            {{-- <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -49,7 +63,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> --}}
         </div>
     </section>
 </div>

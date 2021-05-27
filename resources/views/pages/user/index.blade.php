@@ -39,7 +39,7 @@
             <div class="d-flex">
                 <div class="card mr-3" style="width: 18rem;">
                     <div class="position-relative">
-                        <img class="card-img-top mw-100" src="https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg" alt="Card image cap" style="height: 180px; object-fit: cover;">
+                        <img class="card-img-top mw-100" src="https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg" alt="Card image cap" style="height: 180px; object-fit: cover;">
 
                         <div class="btn btn-sm btn-light" style="position: absolute; left: 12px; top: 12px;">Admin</div>
                         <span style="position: absolute; right: 12px; top: 12px; z-index: 10;">
@@ -54,7 +54,6 @@
                             <div class="btn btn-sm btn-success" style="padding: 0 15px 0 15px;">Aktif</div>
                         </div>
                         <p class="card-title my-2 text-muted">syaputrawahyu@gmail.com</p>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
             </div>

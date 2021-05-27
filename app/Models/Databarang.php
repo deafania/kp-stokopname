@@ -14,7 +14,7 @@ class Databarang extends Model
     protected $primaryKey = 'id_barang';
 
     protected $fillable = [
-        'nama_barang','id_jenisbarang','stok','id_satuanbarang'
+        'id_barang','nama_barang','stok','id_satuanbarang'
     ];
 
     public function unit(){

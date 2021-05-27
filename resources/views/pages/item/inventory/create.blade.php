@@ -23,10 +23,38 @@
 
                     <form action="{{ route('item.store') }}" method="POST">
                         @csrf
+                        {{-- <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal">
+                                @error('tanggal')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div> --}}
+                        {{-- <div class="col-md-5">
+                            
+                            <div class="form-group">
+                                <label for="stok">Id Barang</label>
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" value="">
+                                @error('stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        
+                        </div> --}}
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="nama_barang">Nama Barang</label>
-                                <input type="text" class="form-control @error('nama_barang') is-invalid @enderror" id="nama_barang" name="nama_barang">
+                                <select name="nama_barang" id="nama_barang" class="form-control">
+                                    @foreach ($nama_barang as $item)
+                                        <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
+                                    @endforeach
+                                </select>
                                 @error('nama_barang')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>
@@ -37,6 +65,45 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="stok">Stok</label>
+                                <input type="number" name="stok" id="stok" min="0" value="0" class="form-control">
+                                @error('stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="id_satuanbarang">Satuan Barang</label>
+                                <select name="id_satuanbarang" id="id_satuanbarang" class="form-control">
+                                    @foreach ($item_units as $item)
+                                        <option value="{{ $item->id_satuanbarang }}">{{ $item->satuan_barang }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_satuanbarang')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="stok">Stok</label>
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok">
+                                @error('stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div> --}}
+                        {{-- <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="stok">Jumlah Masuk</label>
                                 <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok">
                                 @error('stok')
                                     <div>
@@ -47,20 +114,15 @@
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label for="usr">Satuan Barang</label>
-                                <select class="custom-select @error('id_satuanbarang') is-invalid @enderror" id="inputGroupSelect01" name="id_satuanbarang">
-                                    <option value="" selected>--- PILIH SATUAN BARANG ---</option>
-                                    @foreach ($item_units as $item_unit)
-                                        <option value="{{ $item_unit->id_satuanbarang }}">{{ $item_unit->satuan_barang }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_satuanbarang')
+                                <label for="stok">Total Stok</label>
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok">
+                                @error('stok')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         
                         <div class="d-flex">
                             <button type="submit" class="btn btn-primary mr-3">Simpan</button>

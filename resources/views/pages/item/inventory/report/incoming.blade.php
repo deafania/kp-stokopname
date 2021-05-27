@@ -19,8 +19,59 @@
 
     <section class="content">
         <div class="container-fluid">
-            
-            <table class="table">
+            <div class="d-flex">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="usr">Awal Tanggal</label>
+                        <input type="date" class="form-control" id="usr" name="username">
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="usr">Akhir Tanggal</label>
+                        <input type="date" class="form-control" id="usr" name="username">
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      {{-- <th scope="col">Id Barang</th> --}}
+                      {{-- <th scope="col">Tanggal</th>
+                      <th scope="col">Id Barang</th>
+                      <th scope="col">Nama Barang</th>
+                      <th scope="col">Jumlah Masuk</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @php
+                    $no = 1;
+                    @endphp
+                     
+                    <tr>
+                      <td>{{ $no++ }}</td> --}}
+                      {{-- <td>{{$kelas->id_kelas}}</td> --}}
+                      {{-- <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        {{-- <a class="mb-2 fas fa-edit bg-danger p-2 text-white rounded" href="/datakelas/{{$kelas->id_kelas}}/update"></a> --}}
+                        {{-- <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a>
+                        <a href="" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
+                      </td>
+                    </tr>
+               
+                  </tbody>
+                </table>
+              </div>
+            </div> --}}
+            {{-- <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Nos</th>
@@ -47,7 +98,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> --}}
             
         </div>
     </section>
