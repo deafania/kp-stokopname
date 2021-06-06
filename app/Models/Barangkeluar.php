@@ -11,7 +11,14 @@ class Barangkeluar extends Model
 
     protected $table = "barang_keluar";
 
+    protected $primaryKey = "id_barangkeluar";
+
     protected $fillable = [
-        'id_transaksi', 'id_databarang','tanggal', 'jumlah_keluar'
+        'id_barangkeluar', 'tanggal', 'id_namabarang', 'jumlah_keluar', 'status'
     ];
+
+    public function Namabarang()
+    {
+        return $this->belongsTo(Namabarang::class, 'id_namabarang', 'id_namabarang');
+    }
 }

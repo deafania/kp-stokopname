@@ -12,7 +12,7 @@
                     </svg>
                     <h1 class="ml-2">Data Barang Keluar</h1>
                 </div>
-                <a href="" class="btn btn-primary">Tambah</a>
+                <a href="{{ route('item.management-outcoming.create') }}" class="btn btn-primary">Tambah</a>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -28,7 +28,6 @@
                       <th scope="col">No</th>
                       {{-- <th scope="col">Id Barang</th> --}}
                       <th scope="col">Tanggal</th>
-                      <th scope="col">Id Barang</th>
                       <th scope="col">Nama Barang</th>
                       <th scope="col">Jumlah Keluar</th>
                       <th scope="col">Status</th>
@@ -39,22 +38,36 @@
                     @php
                     $no = 1;
                     @endphp
-                     
+                     @foreach ($barangkeluar as $item)
                     <tr>
                       <td>{{ $no++ }}</td>
-                      {{-- <td>{{$kelas->id_kelas}}</td> --}}
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      {{-- <td>{{ $kelas->id_kelas }}</td> --}}
+                      <td>{{ $item->tanggal }}</td>
+                      <td>{{ $item->Namabarang->nama_barang }}</td>
+                      <td>{{ $item->jumlah_keluar }}</td>
+                      <td>
+                        @if (isAdmin())
+                        @if ($item->status == 'process')
+                        <a href="{{ route('item.management-outcoming.action', ['id' => $item->id_barangkeluar, 'action' => 'reject']) }}" class="btn btn-sm btn-danger">Reject</a>
+                        <a href="{{ route('item.management-outcoming.action', ['id' => $item->id_barangkeluar, 'action' => 'approve']) }}" class="btn btn-info btn-sm">Approve</a>
+                        @else
+                        {{ $item->status }}
+                        @endif
+                        @else
+                        {{ $item->status }}
+                    @endif
+                      </td>
                       <td>
                         {{-- <a class="mb-2 fas fa-edit bg-danger p-2 text-white rounded" href="/datakelas/{{$kelas->id_kelas}}/update"></a> --}}
-                        <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a>
-                        <a href="" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
+                        {{-- <a href="{{ route('item.barangkeluar-delete-barangkeluar', $item->id_barangkeluar) }}" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a> --}}
+                        @if ($item->status == 'process')
+                        <a href="{{ route('item.barangkeluar-edit-barangkeluar', $item->id_barangkeluar) }}"
+                            class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
+                        @endif
+                        {{-- <a href="" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a> --}}
                       </td>
                     </tr>
-               
+               @endforeach
                   </tbody>
                 </table>
               </div>
@@ -108,9 +121,7 @@
                 </tbody>
             </table> --}}
             
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
-    <!-- /.content -->
 </div>
 @endsection

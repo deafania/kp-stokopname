@@ -14,10 +14,14 @@ class Databarang extends Model
     protected $primaryKey = 'id_barang';
 
     protected $fillable = [
-        'id_barang','nama_barang','stok','id_satuanbarang'
+        'id_barang', 'id_namabarang', 'stok', 'id_satuanbarang'
     ];
 
-    public function unit(){
+    public function Namabarang(){
+        return $this->belongsTo(Namabarang::class, 'id_namabarang', 'id_namabarang');
+    }
+
+    public function Satuanbarang(){
         return $this->belongsTo(Satuanbarang::class, 'id_satuanbarang', 'id_satuanbarang');
     }
 }

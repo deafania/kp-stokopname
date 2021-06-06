@@ -15,54 +15,60 @@
             </div>
         </div>
     </div>
-        
+    
     <section class="content">
         <div class="container-fluid">
             
             <div class="card" style="width: 100%;">
-
+                
                 <div class="card-body pl-4">
                     
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="usr">Nama Barang</label>
-                            <input type="text" class="form-control" id="usr" name="username">
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex">
-                        <button class="btn btn-primary mr-3">Simpan</button>
-                        <button class="btn btn-light">Batal</button>
-                    </div>
-                {{-- <div class="card-body pl-4">
-                    
-                    <div class="d-flex">
+                    <form action="{{ route('item.type.store') }}" method="POST">
+                        @csrf
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label for="usr">Awal Tanggal</label>
-                                <input type="date" class="form-control" id="usr" name="username">
+                                <label for="nama_barang">Nama Barang</label>
+                                <input type="text" class="form-control" id="nama_barang" name="nama_barang">
+                                @error('nama_barang')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-    
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label for="usr">Akhir Tanggal</label>
-                                <input type="date" class="form-control" id="usr" name="username">
+                        
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-primary mr-3">Simpan</button>
+                            <button class="btn btn-light">Batal</button>
+                        </div>
+                    </form>
+                    {{-- <div class="card-body pl-4">
+                        
+                        <div class="d-flex">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="usr">Awal Tanggal</label>
+                                    <input type="date" class="form-control" id="usr" name="username">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="usr">Akhir Tanggal</label>
+                                    <input type="date" class="form-control" id="usr" name="username">
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                        
+                        
+                        <div class="d-flex">
+                            <button class="btn btn-primary mr-3">Cetak</button>
+                            <button class="btn btn-light">Batal</button>
+                        </div>
+                        
+                    </div> --}}
                     
-                    <div class="d-flex">
-                        <button class="btn btn-primary mr-3">Cetak</button>
-                        <button class="btn btn-light">Batal</button>
-                    </div>
-                    
-                </div> --}}
+                </div>
                 
             </div>
-            
-        </div>
-    </section>
-</div>
-@endsection
+        </section>
+    </div>
+    @endsection

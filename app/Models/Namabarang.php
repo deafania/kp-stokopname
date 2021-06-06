@@ -11,9 +11,22 @@ class Namabarang extends Model
 
     protected $table = "nama_barang";
 
-    protected $primaryKey = "id_jenisbarang";
+    protected $primaryKey = "id_namabarang";
 
     protected $fillable = [
-        'id_jenisbarang', 'nama_barang'
+        'id_namabarang', 'nama_barang'
     ];
+
+    public function Databarang()
+    {
+        return $this->hasMany(Databarang::class, 'id_namabarang', 'id_namabarang');
+    }
+
+    public function Barangmasuk(){
+        return $this->hasMany(Barangmasuk::class, 'id_namabarang', 'id_namabarang');
+    }
+
+    public function Barangkeluar(){
+        return $this->hasMany(Barangkeluar::class, 'id_namabarang', 'id_namabarang');
+    }
 }

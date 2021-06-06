@@ -4,50 +4,50 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2 d-flex justify-content-between">
-            <div class="col-sm-6 d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                </svg>
-                <h1 class="ml-2">Nama Barang</h1>
+        <div class="container-fluid">
+            <div class="row mb-2 d-flex justify-content-between">
+                <div class="col-sm-6 d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                    </svg>
+                    <h1 class="ml-2">Nama Barang</h1>
+                </div>
+                <a href="{{ route('item.type.create') }}" class="btn btn-primary">Tambah</a>
             </div>
-            <a href="{{ route('item.type.create') }}" class="btn btn-primary">Tambah</a>
         </div>
-      </div>
-    <div class="card-body">
+        <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  {{-- <th scope="col">Id Kelas</th> --}}
-                  <th scope="col">Nama Barang</th>
-                 
-                  <th scope="col">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                @php
-                $no = 1;
-                @endphp
-                
-                <tr>
-                  <td></td>
-                  {{-- <td>{{$kelas->id_kelas}}</td> --}}
-          
-                  <td></td>
-                  <td>
-                    {{-- <a class="mb-2 fas fa-edit bg-danger p-2 text-white rounded" href="/datakelas/{{$kelas->id_kelas}}/update"></a> --}}
-                    <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a>
-                    <a href="" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
-                  </td>
-                </tr>
-               
-              </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Barang</th>                        
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach ($items as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        
+                        <td>{{ $item->nama_barang }}</td>
+                        <td class="d-flex">
+                            <form action="{{ route('item.type.destroy', $item->id_namabarang) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                {{-- <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a> --}}
+                                <button onclick="return confirm('Yakin ingin menghapus data?')" type="submit" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded" style="border: none;"></button>
+                            </form>
+                            <a href="{{ route('item.type.edit', $item->id_namabarang) }}" class="mb-2 fas fa-edit bg-success p-2 text-white rounded ml-2"></a>
+                        </td>
+                    </tr>
+                    @endforeach             
+                    
+                </tbody>
             </table>
-          </div>
         </div>
     </div>
+</div>
 </div>
 </section>
 {{-- <div class="content-wrapper p-3">
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-
+    
     <section class="content">
         <div class="container-fluid">
             

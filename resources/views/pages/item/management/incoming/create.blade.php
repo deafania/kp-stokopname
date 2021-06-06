@@ -15,54 +15,116 @@
             </div>
         </div>
     </div>
-        
+    
     <section class="content">
         <div class="container-fluid">
             
             <div class="card" style="width: 100%;">
-
+                
                 <div class="card-body pl-4">
                     
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="usr">Nama Barang</label>
-                            <input type="text" class="form-control" id="usr" name="username">
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex">
-                        <button class="btn btn-primary mr-3">Simpan</button>
-                        <button class="btn btn-light">Batal</button>
-                    </div>
-                {{-- <div class="card-body pl-4">
-                    
-                    <div class="d-flex">
+                    <form action="{{ route('item.management-incoming.store') }}" method="POST">
+                        @csrf
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label for="usr">Awal Tanggal</label>
-                                <input type="date" class="form-control" id="usr" name="username">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal">
+                                @error('tanggal')
+                                            <div>
+                                                <p class="text-danger">{{ $message }}</p>
+                                            </div>
+                                @enderror
                             </div>
                         </div>
-    
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label for="usr">Akhir Tanggal</label>
-                                <input type="date" class="form-control" id="usr" name="username">
-                            </div>
-                        </div>
-                    </div>
 
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="id_namabarang">Nama Barang</label>
+                                <select name="id_namabarang" id="id_namabarang" class="form-control @error('id_namabarang') is-invalid @enderror">
+                                    <Option value="">Pilih Nama Barang</Option>
+                                    @foreach ($namabarang as $item)
+                                        <option value="{{ $item->id_namabarang }}">{{ $item->nama_barang }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_namabarang')
+                                <div>
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="stok">Stok</label>
+                                <input type="number" name="stok" id="stok" class="form-control @error('stok') is-invalid @enderror" readonly>
+                                @error('stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="jumlah_masuk">Jumlah Masuk</label>
+                                <input type="number" name="jumlah_masuk" id="jumlah_masuk" class="form-control @error('jumlah_masuk') is-invalid @enderror">
+                                @error('jumlah_masuk')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="total_stok">Total Stok</label>
+                                <input type="number" name="total_stok" id="total_stok" class="form-control @error('total_stok') is-invalid @enderror" readonly>
+                                @error('total_stok')
+                                    <div>
+                                        <p class="text-danger">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-primary mr-3">Simpan</button>
+                            <button type="reset" class="btn btn-light">Batal</button>
+                        </div>
+                    </form>
                     
-                    <div class="d-flex">
-                        <button class="btn btn-primary mr-3">Cetak</button>
-                        <button class="btn btn-light">Batal</button>
-                    </div>
+                    {{-- <div class="card-body pl-4">
+                        
+                        <div class="d-flex">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="usr">Awal Tanggal</label>
+                                    <input type="date" class="form-control" id="usr" name="username">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="usr">Akhir Tanggal</label>
+                                    <input type="date" class="form-control" id="usr" name="username">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="d-flex">
+                            <button class="btn btn-primary mr-3">Cetak</button>
+                            <button class="btn btn-light">Batal</button>
+                        </div>
+                        
+                    </div> --}}
                     
-                </div> --}}
+                </div>
                 
             </div>
-            
-        </div>
-    </section>
-</div>
-@endsection
+        </section>
+    </div>
+    @endsection

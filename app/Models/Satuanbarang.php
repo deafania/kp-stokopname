@@ -14,6 +14,11 @@ class Satuanbarang extends Model
     protected $primaryKey = "id_satuanbarang";
 
     protected $fillable = [
-        'id_satuanbarang','satuan_barang'
+        'id_satuanbarang', 'satuan_barang'
     ];
+
+    public function Databarang()
+    {
+        return $this->hasMany(Databarang::class, 'id_satuanbarang', 'id_satuanbarang');
+    }
 }

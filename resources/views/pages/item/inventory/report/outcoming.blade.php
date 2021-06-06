@@ -1,6 +1,8 @@
 @extends('layouts.backend')
 
 @section('content')
+<form action="{{ route('item.report.out.print') }}" method="post">
+    @csrf
 <div class="content-wrapper p-3">
     
     <div class="content-header">
@@ -12,7 +14,7 @@
                     </svg>
                     <h1 class="ml-2">Laporan Data Barang Keluar</h1>
                 </div>
-                <a href="{{ route('item.type.create') }}" class="btn btn-primary">Cetak</a>
+                <input type="submit" value="Cetak" class="btn btn-primary">
             </div>
         </div>
     </div>
@@ -23,14 +25,14 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <label for="usr">Awal Tanggal</label>
-                        <input type="date" class="form-control" id="usr" name="username">
+                        <input type="date" class="form-control" id="usr" name="start_date" required>
                     </div>
                 </div>
 
                 <div class="col-md-5">
                     <div class="form-group">
                         <label for="usr">Akhir Tanggal</label>
-                        <input type="date" class="form-control" id="usr" name="username">
+                        <input type="date" class="form-control" id="usr" name="end_date" required>
                     </div>
                 </div>
             </div>
@@ -67,4 +69,5 @@
         </div>
     </section>
 </div>
+</form>
 @endsection

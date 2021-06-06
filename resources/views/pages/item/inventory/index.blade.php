@@ -20,7 +20,6 @@
             <thead>
               <tr>
                 <th scope="col">No</th>
-                {{-- <th scope="col">Id Barang</th> --}}
                 <th scope="col">Nama Barang</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Satuan</th>
@@ -28,19 +27,15 @@
               </tr>
             </thead>
             <tbody>
-               @foreach ($items as $item)
+               @foreach ($databarang as $item)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                {{-- <td>{{$kelas->id_kelas}}</td> --}}
-        
-                <td>{{ $item->nama_barang }}</td>
-                <td>{{ $item->stok }}</td>
-                <td>{{ $item->unit->satuan_barang  }}</td>
-                {{-- <td></td> --}}
+                <td>{{ $item->Namabarang->nama_barang }}</td>
+                <td>{{ $item->Namabarang->stok }}</td>
+                <td>{{ $item->Satuanbarang->satuan_barang  }}</td>
                 <td>
-                  {{-- <a class="mb-2 fas fa-edit bg-danger p-2 text-white rounded" href="/datakelas/{{$kelas->id_kelas}}/update"></a> --}}
                   <a href="{{ route('databarang-delete-databarang', $item->id_barang) }}" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a>
-                  <a href="/databarang/{{$item->id_barang}}/edit" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
+                  <a href="{{ route('databarang-edit-databarang', $item->id_barang) }}" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
                 </td>
               </tr>
              @endforeach

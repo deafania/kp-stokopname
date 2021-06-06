@@ -12,7 +12,7 @@
                     </svg>
                     <h1 class="ml-2">Data Barang Masuk</h1>
                 </div><!-- /.col -->
-                <a href="" class="btn btn-primary">Tambah</a>
+                <a href="{{ route('item.management-incoming.create') }}" class="btn btn-primary">Tambah</a>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -26,9 +26,7 @@
                   <thead>
                     <tr>
                       <th scope="col">No</th>
-                      {{-- <th scope="col">Id Barang</th> --}}
                       <th scope="col">Tanggal</th>
-                      <th scope="col">Id Barang</th>
                       <th scope="col">Nama Barang</th>
                       <th scope="col">Jumlah Masuk</th>
                       <th scope="col">Aksi</th>
@@ -38,20 +36,16 @@
                     @php
                     $no = 1;
                     @endphp
-                     @foreach ($incoming_items as $item)
+                     @foreach ($barangmasuk as $item)
                     <tr>
                       <td>{{ $no++ }}</td>
-                      {{-- <td>{{$kelas->id_kelas}}</td> --}}
-              
                       <td>{{ $item->tanggal }}</td>
-                      <td>{{ $item->id_barang }}</td>
-                      <td>{{ $item->nama_barang }}</td>
+                      <td>{{ $item->Namabarang->nama_barang }}</td>
                       <td>{{ $item->jumlah_masuk }}</td>
-                      {{-- <td></td> --}}
                       <td>
                         {{-- <a class="mb-2 fas fa-edit bg-danger p-2 text-white rounded" href="/datakelas/{{$kelas->id_kelas}}/update"></a> --}}
-                        <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a>
-                        <a href="/databarangmasuk/{{$item->id_barangmasuk}}/edit" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
+                        {{-- <a href="" onclick="return confirm('Yakin ingin menghapus data?')" class="mb-2 fas fa-trash-alt bg-danger p-2 text-white rounded"></a> --}}
+                        <a href="{{ route('item.barangmasuk-edit-barangmasuk', $item->id_barangmasuk) }}" class="mb-2 fas fa-edit bg-success p-2 text-white rounded"></a>
                       </td>
                     </tr>
                    @endforeach

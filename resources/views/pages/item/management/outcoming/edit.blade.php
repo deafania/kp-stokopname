@@ -10,7 +10,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
-                    <h1 class="ml-2">Input Nama Barang</h1>
+                    <h1 class="ml-2">Edit Barang Keluar</h1>
                 </div>
             </div>
         </div>
@@ -23,12 +23,12 @@
                 
                 <div class="card-body pl-4">
                     
-                    <form action="{{ route('item.management-outcoming.store') }}" method="POST">
+                    <form action="{{ route('item.barangkeluar-update-barangkeluar', $barangkeluar->id_barangkeluar) }}" method="POST">
                         @csrf
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal">
+                                <input type="date" value="{{ $barangkeluar->tanggal }}" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal">
                                 @error('tanggal')
                                             <div>
                                                 <p class="text-danger">{{ $message }}</p>
@@ -42,10 +42,11 @@
                                 <label for="id_namabarang">Nama Barang</label>
                                 <select name="id_namabarang" id="id_namabarang" class="form-control @error('id_namabarang') is-invalid @enderror">
                                     <Option value="">Pilih Nama Barang</Option>
-                                    @foreach ($namabarang as $item)
-                                        <option value="{{ $item->id_namabarang }}">{{ $item->nama_barang }}</option>
+                                    @foreach ($barang as $item)
+                                        <option value="{{ $item->id_namabarang }}" @if ($item->id_namabarang == $barangkeluar->id_namabarang) selected @endif disabled>{{ $item->nama_barang }}</option>
                                     @endforeach
                                 </select>
+                                <input type="hidden" name="id_namabarang" value="{{ $barangkeluar->id_barangkeluar }}">
                                 @error('id_namabarang')
                                 <div>
                                     <p class="text-danger">{{ $message }}</p>
@@ -57,7 +58,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="stok">Stok</label>
-                                <input type="number" name="stok" id="stok" min="0" value="0" class="form-control @error('stok') is-invalid @enderror" disabled>
+                                <input type="number" name="stok" id="stok" min="0" value="{{ $barangkeluar->Namabarang->stok }}" class="form-control @error('stok') is-invalid @enderror" disabled>
                                 @error('stok')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>
@@ -69,7 +70,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="jumlah_keluar">Jumlah Keluar</label>
-                                <input type="number" name="jumlah_keluar" id="jumlah_keluar" min="0" value="0" class="form-control @error('jumlah_keluar') is-invalid @enderror">
+                                <input type="number" name="jumlah_keluar" id="jumlah_keluar" min="0" value="{{ $barangkeluar->jumlah_keluar }}" class="form-control @error('jumlah_keluar') is-invalid @enderror">
                                 @error('jumlah_keluar')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>
@@ -83,7 +84,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="total_stok">Total Stok</label>
-                                <input type="number" name="total_stok" id="total_stok" min="0" value="0" class="form-control @error('total_stok') is-invalid @enderror" disabled>
+                                <input type="number" name="total_stok" id="total_stok" min="0" value="{{ $barangkeluar->Namabarang->stok }}" class="form-control @error('total_stok') is-invalid @enderror" disabled>
                                 @error('total_stok')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>

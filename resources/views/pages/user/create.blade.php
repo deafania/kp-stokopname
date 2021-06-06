@@ -35,7 +35,7 @@
                             <div>
                                 <div class="form-group">
                                     <label for="usr">Username</label>
-                                    <input type="text" class="form-control" id="usr" name="username" disabled>
+                                    <input type="text" class="form-control" id="usr" name="username">
                                 </div>
                             </div>
                             <div>

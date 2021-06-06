@@ -147,7 +147,7 @@
 				</li>
 				<li class="nav-item">
 					<li class="nav-item">
-						<a href="{{ route('item.index') }}" class="nav-link {{ ( request()->is('qrcode') || request()->is('qrcode/create') ) ? 'active' : ''}}">
+						<a href="{{ route('qr_code') }}" class="nav-link {{ ( request()->is('qrcode') || request()->is('qrcode/create') ) ? 'active' : ''}}">
 							<i class="nav-icon fas fa-users"></i>
 							<p>
 								Qr Code
