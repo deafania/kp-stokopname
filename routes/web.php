@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/data-barang', [ItemController::class, 'data_barang'])->name('data_barang');
@@ -85,6 +85,9 @@ Route::middleware('auth')->group( function() {
     
     Route::get('/manajemen-user/create', 'UserManagementController@create')->name('user.create');
     Route::post('/manajemen-user/store', 'UserManagementController@store')->name('user.store');
+
+    Route::get('/manajemen-user/{user}/edit', 'UserManagementController@edit')->name('user.edit');
+    Route::put('/manajemen-user/{user}/update', 'UserManagementController@update')->name('user.update');
 });
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

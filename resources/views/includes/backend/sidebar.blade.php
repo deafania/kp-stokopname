@@ -10,7 +10,11 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
+				@if (auth()->user()->picture == '')
 				<img src="adminlte/dist/img/dea.jpg" class="img-circle elevation-2" alt="User Image">
+				@else
+				<img src="{{ asset('uploads/images/'. auth()->user()->picture) }}" class="img-circle elevation-2" alt="User Image">
+				@endif
 			</div>
 			<div class="info">
 				<a href="#" class="d-block">{{ auth()->user()->name }} ( {{ auth()->user()->role }} )</a>
