@@ -27,9 +27,10 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {   
+        // dd($request->all());
         $rules = [
-            'id_namabarang' => 'required',
-            'stok' => 'required',
+            'namabarang' => 'required',
+            'stok' => 'required|numeric',
             'id_satuanbarang' => 'required'
         ];
         $message = [
@@ -41,10 +42,14 @@ class ItemController extends Controller
 
         if($validate) {
             Databarang::create([
-                'id_namabarang' => $request->id_namabarang,
+                'id_namabarang' => $request->namabarang,
                 'stok' => $request->stok,
                 'id_satuanbarang' => $request->id_satuanbarang
             ]);
+            $barang = Namabarang::find($request->namabarang);
+            $barang->stok = $request->stok;
+            $barang->save();
+
             return redirect()->route('item.index')->with('success', 'Data barang berhasil dibuat');
         }
 
@@ -77,6 +82,11 @@ class ItemController extends Controller
                 'stok' => $request->stok,
                 'id_satuanbarang' => $request->id_satuanbarang
             ]);
+
+            $barang = Namabarang::find($request->id_namabarang);
+            $barang->stok = $request->stok;
+            $barang->save();
+
             return redirect()->route('item.index')->with('success', 'Data barang berhasil diupdate');
         }
     }

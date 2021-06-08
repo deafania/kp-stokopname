@@ -18,88 +18,48 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>Data Barang</h3>
-                            
-                            <p>New Orders</p>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="data-keluar-masuk"></div>
                         </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Barang dibawah 5</h5>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <div class="card-body">
+                            @if (count($barangDibawahLima) > 0)
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Barang</th>
+                                                <th scope="col">Stok</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($barangDibawahLima as $item)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->nama_barang }}</td>
+                                                    <td>{{ $item->stok }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <div class="alert alert-info">
+                                    Tidak ada barang dengan stok dibawah 5
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-                            
-                            <p>Bounce Rate</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>44</h3>
-                            
-                            <p>User Registrations</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>65</h3>
-                            
-                            <p>Unique Visitors</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
             </div>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Id Barang</th>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col">Stok</th>
-                        <th scope="col">Satuan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>000001</td>
-                        <td>Pena</td>
-                        <td>5</td>
-                        <td>Pcs</td>
-                    </tr>
-                </tbody>
-            </table>
             
             <!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -107,3 +67,81 @@
     <!-- /.content -->
 </div>
 @endsection
+
+@push('custom_js')
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+<script>
+    Highcharts.chart('data-keluar-masuk', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Barang Keluar - Masuk per Bulan Tahun 2021'
+    },
+    subtitle: false,
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'Mei',
+            'Jun',
+            'Jul',
+            'Agt',
+            'Sep',
+            'Okt',
+            'Nov',
+            'Des'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y} barang</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Keluar',
+        data: [
+            @foreach (getDataBarangKeluar() as $data)
+                @if ($data[0]->jumlah_keluar == null)
+                    0,
+                @else
+                    {{ $data[0]->jumlah_keluar }},
+                @endif
+            @endforeach
+        ]
+
+    }, {
+        name: 'Masuk',
+        data: [
+            @foreach (getDataBarangMasuk() as $data)
+                @if ($data[0]->jumlah_masuk == null)
+                    0,
+                @else
+                    {{ $data[0]->jumlah_masuk }},
+                @endif
+            @endforeach
+        ]
+
+    }]
+});
+</script>
+@endpush

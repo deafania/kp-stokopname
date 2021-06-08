@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemIncomingManagementController;
 use App\Http\Controllers\ItemOutcomingManagementController;
 use App\Http\Controllers\ItemReportController;
 use App\Http\Controllers\ItemUnitController;
+use App\Http\Controllers\LogActivityController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +18,8 @@ Auth::routes(['register' => false]);
 Route::get('/data-barang', [ItemController::class, 'data_barang'])->name('data_barang');
 
 Route::middleware('auth')->group( function() {
+    Route::get('/log-aktifitas', [LogActivityController::class, 'index'])->name('log.activity');
+
     Route::get('/databarang/qr-code', [ItemController::class, 'qr_code'])->name('qr_code');
     Route::get('/databarang/qr-code/download', [ItemController::class, 'qr_code_download'])->name('qr_code_download');
 

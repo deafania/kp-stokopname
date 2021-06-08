@@ -50,7 +50,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="nama_barang">Nama Barang</label>
-                                <select name="nama_barang" id="nama_barang" class="form-control">
+                                <select name="namabarang" id="nama_barang" class="form-control">
                                     @foreach ($nama_barang as $item)
                                         <option value="{{ $item->id_namabarang }}">{{ $item->nama_barang }}</option>
                                     @endforeach

@@ -42,7 +42,8 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="stok">Stok</label>
-                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" value="{{ $databarang->stok }}">
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror"
+                                    id="stok" name="stok" value="{{ $databarang->Namabarang->stok }}">
                                 @error('stok')
                                     <div>
                                         <p class="text-danger">{{ $message }}</p>
